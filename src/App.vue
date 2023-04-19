@@ -6,7 +6,8 @@ import "/node_modules/flag-icons/css/flag-icons.min.css"
 export default {
    data() {
       return {
-         store
+         store,
+         mainList: []
       }
    },
    methods: {
@@ -16,27 +17,29 @@ export default {
             .then(response => {
                console.log(response.data.results)
                store.movies = response.data.results
+               console.log(this.mainList)
             })
             .catch(err => {
                console.log(err);
                console.log(err.message);
                
             })
-      },
-      filterMovies() {
-         if (store.searchText.length > 0) {
-            this.callApi(store.API_URL + store.searchText)
+         },
+         filterMovies() {
+            if (store.searchText.length > 0) {
+               this.callApi(store.API_URL + store.searchText)
          }
       },
       getFlag(flag) {
          if (flag === 'en') {
             flag = 'gb'
+         } else if (flag === 'ja') {
+            flag = 'jp'
          }
          return `fi fi-${flag}`
       }
    },
    mounted() {
-      console.log(this.store)
       this.callApi(store.API_URL)
    }
 }
