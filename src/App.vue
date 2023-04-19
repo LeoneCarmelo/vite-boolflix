@@ -6,8 +6,7 @@ import "/node_modules/flag-icons/css/flag-icons.min.css"
 export default {
    data() {
       return {
-         store,
-         mainList: []
+         store
       }
    },
    methods: {
@@ -17,7 +16,6 @@ export default {
             .then(response => {
                console.log(response.data.results)
                store.movies = response.data.results
-               console.log(this.mainList)
             })
             .catch(err => {
                console.log(err);
@@ -37,6 +35,20 @@ export default {
             flag = 'jp'
          }
          return `fi fi-${flag}`
+      },
+      getTitle(movie) {
+         if (movie.title === undefined) {
+            return movie.name
+         } else {
+            return movie.title
+         }
+      },
+      getOriginalTitle(movie) {
+         if (movie.original_title === undefined) {
+            return movie.original_name
+         } else {
+            return movie.original_title
+         }
       }
    },
    mounted() {
@@ -56,8 +68,8 @@ export default {
    <main>
       <ul v-if="store.movies">
          <li v-for="movie in store.movies">
-            <h3>{{ movie.title }}</h3>
-            <p>{{ movie.original_title }}</p>
+            <h3>{{ getTitle(movie) }}</h3><!-- movie.title -->
+            <p>{{ getOriginalTitle(movie) }}</p>
             <span :class="getFlag(movie.original_language)"></span>
             <p>{{ movie.vote_average }}</p>
          </li>
