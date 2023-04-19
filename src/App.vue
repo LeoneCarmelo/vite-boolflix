@@ -20,12 +20,12 @@ export default {
             .catch(err => {
                console.log(err);
                console.log(err.message);
-               
+
             })
-         },
-         filterMovies() {
-            if (store.searchText.length > 0) {
-               this.callApi(store.API_URL + store.searchText)
+      },
+      filterMovies() {
+         if (store.searchText.length > 0) {
+            this.callApi(store.API_URL + store.searchText)
          }
       },
       getFlag(flag) {
@@ -52,7 +52,33 @@ export default {
       },
       getImage(movie) {
          return store.posterPath + movie
+      },
+      getVote(vote) {
+         const newVote = Math.ceil(vote)
+         switch (newVote) {
+            case 10:
+            case 9:
+               return 5
+               break;
+            case 8:
+            case 7:
+               return 4
+               break;
+            case 6:
+            case 5:
+               return 3
+               break;
+            case 4:
+            case 3:
+               return 2
+               break;
+            case 2:
+            case 1:
+               return 1
+         }
+
       }
+
    },
    mounted() {
       this.callApi(store.API_URL)
@@ -77,7 +103,7 @@ export default {
             <h3>{{ getTitle(movie) }}</h3><!-- movie.title -->
             <p>{{ getOriginalTitle(movie) }}</p>
             <span :class="getFlag(movie.original_language)"></span>
-            <p>{{ movie.vote_average }}</p>
+            <p>{{ getVote(movie.vote_average) }}</p><!-- movie.vote_average -->
          </li>
       </ul>
    </main>
