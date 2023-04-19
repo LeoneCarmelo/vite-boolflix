@@ -1,6 +1,8 @@
 <script>
 import { store } from './store'
 import axios from 'axios'
+import "/node_modules/flag-icons/css/flag-icons.min.css"
+
 export default {
    data() {
       return {
@@ -13,20 +15,28 @@ export default {
             .get(url)
             .then(response => {
                console.log(response.data.results)
+               store.movies = response.data.results
             })
             .catch(err => {
                console.log(err);
                console.log(err.message);
-               store.movies = response.data.results
+               
             })
       },
       filterMovies() {
          if (store.searchText.length > 0) {
             this.callApi(store.API_URL + store.searchText)
          }
+      },
+      getFlag(flag) {
+         if (flag === 'en') {
+            flag = 'gb'
+         }
+         return `fi fi-${flag}`
       }
    },
    mounted() {
+      console.log(this.store)
       this.callApi(store.API_URL)
    }
 }
@@ -45,7 +55,7 @@ export default {
          <li v-for="movie in store.movies">
             <h3>{{ movie.title }}</h3>
             <p>{{ movie.original_title }}</p>
-            <p>{{ movie.original_language }}</p>
+            <span :class="getFlag(movie.original_language)"></span>
             <p>{{ movie.vote_average }}</p>
          </li>
       </ul>
