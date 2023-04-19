@@ -49,6 +49,9 @@ export default {
          } else {
             return movie.original_title
          }
+      },
+      getImage(movie) {
+         return store.posterPath + movie
       }
    },
    mounted() {
@@ -68,6 +71,9 @@ export default {
    <main>
       <ul v-if="store.movies">
          <li v-for="movie in store.movies">
+            <div class="front_image">
+               <img :src="getImage(movie.poster_path)" alt="">
+            </div>
             <h3>{{ getTitle(movie) }}</h3><!-- movie.title -->
             <p>{{ getOriginalTitle(movie) }}</p>
             <span :class="getFlag(movie.original_language)"></span>
