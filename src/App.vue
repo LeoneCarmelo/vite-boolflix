@@ -104,7 +104,7 @@ export default {
 </script>
 
 <template>
-   <AppHeader :filter="filterMovies()" :filterBtn="filterMovies()"/>
+   <AppHeader  @filter="filterMovies()"/>
 
    <!-- Main -->
    <main>

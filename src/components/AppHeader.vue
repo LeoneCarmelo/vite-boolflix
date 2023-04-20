@@ -6,6 +6,7 @@ export default {
         filter: Function,
         filterBtn: Function
     },
+    emits: ['filter'],
     data() {
         return {
             store
@@ -18,8 +19,8 @@ export default {
    <!-- Header -->
    <header class="p-3">
       <h1>Boolflix</h1>
-      <input v-model="store.searchText" @keyup.enter="filter"><!-- filterMovies() -->
-      <button @click="filterBtn" class="mx-2">Search</button>
+      <input v-model="store.searchText" @keyup.enter="$emit('filter')"><!-- filterMovies() -->
+      <button @click="$emit('filter')" class="mx-2">Search</button>
    </header>
 </template>
 
