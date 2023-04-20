@@ -33,6 +33,10 @@ export default {
             flag = 'gb'
          } else if (flag === 'ja') {
             flag = 'jp'
+         } else if (flag === 'ar') {
+            flag = 'sa'
+         } else if (flag === 'ko') {
+            flag = 'kr'
          }
          return `fi fi-${flag}`
       },
@@ -77,7 +81,16 @@ export default {
                return 1
          }
 
-      }
+      },
+      getEmptyStar(vote) {
+         const newVote = this.getVote(vote)
+         const star = 5 - newVote
+         if (newVote === undefined) {
+            return ''
+         }
+         return star 
+      },
+
 
    },
    mounted() {
@@ -104,9 +117,17 @@ export default {
             <p>{{ getOriginalTitle(movie) }}</p>
             <span :class="getFlag(movie.original_language)"></span>
             <p>{{ getVote(movie.vote_average) }}</p><!-- movie.vote_average -->
+            <div class="stars">
+               <img v-for="goldStar in getVote(movie.vote_average)" src="/gold-star.png" alt="" class="img-fluid">
+               <img v-for="whiteStar in getEmptyStar(movie.vote_average)" src="/white-star.png" alt="" class="img-fluid">
+            </div>
          </li>
       </ul>
    </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.stars > img{
+   width:30px;
+}
+</style>
