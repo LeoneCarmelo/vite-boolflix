@@ -2,8 +2,12 @@
 import { store } from './store'
 import axios from 'axios'
 import "/node_modules/flag-icons/css/flag-icons.min.css"
+import AppHeader from './components/AppHeader.vue'
 
 export default {
+   components: {
+      AppHeader
+   },
    data() {
       return {
          store
@@ -100,12 +104,8 @@ export default {
 </script>
 
 <template>
-   <!-- Header -->
-   <header class="p-3">
-      <h1>Boolflix</h1>
-      <input v-model="store.searchText" @keyup.enter="filterMovies()">
-      <button @click="filterMovies()" class="mx-2">Search</button>
-   </header>
+   <AppHeader :filter="filterMovies()" :filterBtn="filterMovies()"/>
+
    <!-- Main -->
    <main>
       <ul v-if="store.movies">
