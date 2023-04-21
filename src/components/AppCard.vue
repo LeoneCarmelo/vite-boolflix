@@ -34,7 +34,7 @@ export default {
                     <img v-for="star in goldStar" src="/gold-star.png" alt="" class="img-fluid"><!-- getVote(movie.vote_average) -->
                     <img v-for="whiteStar in emptyStar" src="/white-star.png" alt="" class="img-fluid"><!-- getEmptyStar(movie.vote_average) -->
                 </div>
-                <p><strong>Overview: </strong>{{ overview }}</p>
+                <p class="mt-2"><strong>Overview: </strong>{{ overview }}</p>
             </div>
 
         </div>
@@ -47,6 +47,7 @@ export default {
 
 .front_card {
     position:relative;
+    width: 342px;
 
     .back_card {
         position:absolute;
@@ -65,6 +66,10 @@ export default {
     }
 }
 
+.stars + p {
+    height:250px;
+    overflow-y: scroll;
+}
 .front_card:hover  .back_card{
     display: block;
 }
