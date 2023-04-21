@@ -6,7 +6,8 @@ const store = reactive({
     movies: null,
     tv_shows: null,
     posterPath: 'https://image.tmdb.org/t/p/w342',
-    imgNotFound: '/image-not-found.jpg'
+    imgNotFound: '/image-not-found.jpg',
+    paddingMain: false
 
 })
 

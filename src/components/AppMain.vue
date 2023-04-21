@@ -56,7 +56,7 @@ export default {
 
 <template>
     <!-- Main -->
-    <main class="mt-5">
+    <main :class="store.paddingMain ? 'pt-5' : ''">
         <div class="container">
             <ul v-if="store.movies" class="row">
                 <AppCard v-for="movie in store.movies" :src="getImage(movie.poster_path)" :title="getTitle(movie)"
@@ -70,6 +70,11 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/partials/variables' as *;
 
+main {
+    background-image: url('/bg-netflix.jpg');
+    background-repeat:repeat-y;
+    background-size: cover;
+}
 ul {
     color: $light;
     list-style: none;

@@ -1,8 +1,10 @@
 @use '/node_modules/bootstrap/scss/bootstrap.scss';
 
 body {
-    background-image: url('/bg-netflix.jpg');
+/*     background-image: url('/bg-netflix.jpg');
     background-repeat:repeat-y;
-
-
+    background-size: cover;
+ */
+ background-color: #1b1b1b;
 }
+
