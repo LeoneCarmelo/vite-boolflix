@@ -23,16 +23,15 @@ export default {
 <template>
     <li class="col mb-4">
         <div class="front_card">
-            <img :src="src" alt=""><!-- getImage(movie.poster_path) -->
+            <img :src="src" alt="">
             <div class="back_card p-2">
-                <h4 class="fw-bold">Titolo: {{ title }}</h4><!-- movie.title -->
-                <p><strong>Titolo originale:</strong> {{ originalTitle }}</p><!-- getOriginalTitle(movie) -->
-                <p><strong>Language: </strong><span :class="flag"></span></p><!-- getFlag(movie.original_language) -->     
-                <!-- <p>{{ vote }}</p> --><!-- getVote(movie.vote_average) -->
+                <h4 class="fw-bold">Titolo: {{ title }}</h4>
+                <p><strong>Titolo originale:</strong> {{ originalTitle }}</p>
+                <p><strong>Language: </strong><span :class="flag"></span></p> 
                 <div class="stars">
                     <strong>Voto: </strong> 
-                    <img v-for="star in goldStar" src="/gold-star.png" alt="" class="img-fluid"><!-- getVote(movie.vote_average) -->
-                    <img v-for="whiteStar in emptyStar" src="/white-star.png" alt="" class="img-fluid"><!-- getEmptyStar(movie.vote_average) -->
+                    <img v-for="star in goldStar" src="/gold-star.png" alt="" class="img-fluid">
+                    <img v-for="whiteStar in emptyStar" src="/white-star.png" alt="" class="img-fluid">
                 </div>
                 <p class="mt-2"><strong>Overview: </strong>{{ overview }}</p>
             </div>

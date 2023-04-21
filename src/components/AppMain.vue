@@ -31,29 +31,8 @@ export default {
             }
         },
         getVote(vote) {
-            const newVote = Math.ceil(vote)
-            switch (newVote) {
-                case 10:
-                case 9:
-                    return 5
-                    break;
-                case 8:
-                case 7:
-                    return 4
-                    break;
-                case 6:
-                case 5:
-                    return 3
-                    break;
-                case 4:
-                case 3:
-                    return 2
-                    break;
-                case 2:
-                case 1:
-                    return 1
-            }
-
+            const newVote = Math.ceil(vote / 2)
+            return newVote
         },
         getEmptyStar(vote) {
             const newVote = this.getVote(vote)
@@ -63,17 +42,17 @@ export default {
             }
             return star
         },
-        getFlag(flag) {
-            if (flag === 'en') {
-                flag = 'gb'
-            } else if (flag === 'ja') {
-                flag = 'jp'
-            } else if (flag === 'ar') {
-                flag = 'sa'
-            } else if (flag === 'ko') {
-                flag = 'kr'
+        getFlagFrom(lang) {
+            if (lang === 'en') {
+                lang = 'gb'
+            } else if (lang === 'ja') {
+                lang = 'jp'
+            } else if (lang === 'ar') {
+                lang = 'sa'
+            } else if (lang === 'ko') {
+                lang = 'kr'
             }
-            return `fi fi-${flag}`
+            return `fi fi-${lang}`
         },
     }
 }
@@ -84,7 +63,10 @@ export default {
     <main class="mt-5">
         <div class="container">
             <ul v-if="store.movies" class="row">
-                <AppCard v-for="movie in store.movies" :src="getImage(movie.poster_path)" :title="getTitle(movie)" :originalTitle="getOriginalTitle(movie)" :flag="getFlag(movie.original_language)" :vote="getVote(movie.vote_average)" :goldStar="getVote(movie.vote_average)" :emptyStar="getEmptyStar(movie.vote_average)" :overview="movie.overview"/>
+                <AppCard v-for="movie in store.movies" :src="getImage(movie.poster_path)" :title="getTitle(movie)"
+                    :originalTitle="getOriginalTitle(movie)" :flag="getFlagFrom(movie.original_language)"
+                    :vote="getVote(movie.vote_average)" :goldStar="getVote(movie.vote_average)"
+                    :emptyStar="getEmptyStar(movie.vote_average)" :overview="movie.overview" />
             </ul>
         </div>
     </main>
@@ -97,6 +79,4 @@ ul {
     color: $light;
     list-style: none;
 }
-
-
 </style>

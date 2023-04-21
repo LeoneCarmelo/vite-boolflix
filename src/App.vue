@@ -32,15 +32,27 @@ export default {
             this.callApi(store.API_URL + store.searchText)
          }
       },
+      hasTheImage() {
+         if (store.movies) {
+            store.movies.forEach((movie, index) => {
+               if (!movie[index].hasOwnProperty(movie.poster_path)) {
+                   return store.movies.splice(index, 1)
+               } else {
+                   return store.movies
+               }
+            });
+         }
+        },
    },
    mounted() {
       this.callApi(store.API_URL)
+      this.hasTheImage()
+      console.log(this.hasTheImage())
    }
 }
 </script>
 
 <template>
-<!--    <div class="welcome">Welcome</div> -->
    <AppHeader @filter="filterMovies()" />
    <AppMain />
 </template>
