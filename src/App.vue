@@ -30,24 +30,13 @@ export default {
       filterMovies() {
          if (store.searchText.length > 0) {
             this.callApi(store.API_URL + store.searchText)
+         } else {
+            store.searchText = 'Please search something'
          }
-      },
-      hasTheImage() {
-         if (store.movies) {
-            store.movies.forEach((movie, index) => {
-               if (!movie[index].hasOwnProperty(movie.poster_path)) {
-                   return store.movies.splice(index, 1)
-               } else {
-                   return store.movies
-               }
-            });
-         }
-        },
+      }
    },
    mounted() {
       this.callApi(store.API_URL)
-      this.hasTheImage()
-      console.log(this.hasTheImage())
    }
 }
 </script>

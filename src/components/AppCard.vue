@@ -13,8 +13,6 @@ export default {
         originalTitle: String,
         flag: String,
         vote: Number,
-        goldStar: Number,
-        emptyStar: Number,
         overview: String
     }
 }
@@ -30,8 +28,8 @@ export default {
                 <p><strong>Language: </strong><span :class="flag"></span></p> 
                 <div class="stars">
                     <strong>Voto: </strong> 
-                    <img v-for="star in goldStar" src="/gold-star.png" alt="" class="img-fluid">
-                    <img v-for="whiteStar in emptyStar" src="/white-star.png" alt="" class="img-fluid">
+                    <img v-for="star in vote" src="/gold-star.png" alt="" class="img-fluid">
+                    <img v-for="whiteStar in (5 - vote)" src="/white-star.png" alt="" class="img-fluid">
                 </div>
                 <p class="mt-2"><strong>Overview: </strong>{{ overview }}</p>
             </div>
