@@ -48,6 +48,7 @@ export default {
 .front_card {
     position:relative;
     width: 342px;
+    height:513px;
 
     .back_card {
         position:absolute;
@@ -72,6 +73,12 @@ export default {
 }
 .front_card:hover  .back_card{
     display: block;
+}
+
+.front_card > img {
+    width: 342px;
+    height:100%;
+    object-fit: cover;
 }
 
 </style>
