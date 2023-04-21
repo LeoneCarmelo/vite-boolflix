@@ -68,7 +68,7 @@ export default {
 }
 
 .stars + p {
-    height:250px;
+    height:340px;
     overflow-y: scroll;
 }
 .front_card:hover  .back_card{

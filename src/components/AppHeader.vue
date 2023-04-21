@@ -29,6 +29,9 @@ export default {
 header {
     background-color: $dark;
     color: $redlogo;
+    position: sticky;
+    z-index: 1;
+    top:0;
 
     button {
         color: $light;
@@ -38,4 +41,10 @@ header {
 
     }
 }
+
+header:hover {
+    background-color: black;
+}
+
+
 </style>

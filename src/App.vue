@@ -40,6 +40,7 @@ export default {
 </script>
 
 <template>
+<!--    <div class="welcome">Welcome</div> -->
    <AppHeader @filter="filterMovies()" />
    <AppMain />
 </template>
