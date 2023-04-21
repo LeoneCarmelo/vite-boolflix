@@ -13,8 +13,8 @@ export default {
 
 <template>
     <!-- Header -->
-    <header class="p-3 d-flex justify-content-between align-items-center">
-        <h1 class="text-uppercase fw-bold">Boolflix</h1>
+    <header class="p-3 d-flex justify-content-between align-items-center flex-wrap">
+        <h1 class="text-uppercase fw-bold mx-1">Boolflix</h1>
         <div class="action">
             <input v-model="store.searchText" @keyup.enter="$emit('filter')">
             <button @click="$emit('filter')" class="mx-2">Search</button>
