@@ -84,7 +84,7 @@ export default {
     <main>
         <div class="container">
             <ul v-if="store.movies" class="row">
-                <AppCard v-for="movie in store.movies" :src="getImage(movie.poster_path)" :title="getTitle(movie)" :originalTitle="getOriginalTitle(movie)" :flag="getFlag(movie.original_language)" :vote="getVote(movie.vote_average)" :goldStar="getVote(movie.vote_average)" :emptyStar="getEmptyStar(movie.vote_average)"/>
+                <AppCard v-for="movie in store.movies" :src="getImage(movie.poster_path)" :title="getTitle(movie)" :originalTitle="getOriginalTitle(movie)" :flag="getFlag(movie.original_language)" :vote="getVote(movie.vote_average)" :goldStar="getVote(movie.vote_average)" :emptyStar="getEmptyStar(movie.vote_average)" :overview="movie.overview"/>
             </ul>
         </div>
     </main>

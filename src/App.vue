@@ -4,7 +4,6 @@ import axios from 'axios'
 import "/node_modules/flag-icons/css/flag-icons.min.css"
 import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
-
 export default {
    components: {
       AppHeader,
@@ -26,7 +25,6 @@ export default {
             .catch(err => {
                console.log(err);
                console.log(err.message);
-
             })
       },
       filterMovies() {
@@ -34,9 +32,6 @@ export default {
             this.callApi(store.API_URL + store.searchText)
          }
       },
-
-
-
    },
    mounted() {
       this.callApi(store.API_URL)
@@ -47,8 +42,6 @@ export default {
 <template>
    <AppHeader @filter="filterMovies()" />
    <AppMain />
-
-
 </template>
 
 <style lang="scss" scoped>
