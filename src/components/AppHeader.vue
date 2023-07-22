@@ -19,9 +19,11 @@ export default {
         <a href="#movies" class="text-white text-decoration-none" @click="store.searching = false">Movies</a>
         <a href="" class="text-white text-decoration-none" @click="store.searching = false">Recently Added</a>
         <a href="" class="text-white text-decoration-none">My List</a>
-        <div class="action">
-            <input v-model="store.searchText" @keyup.enter="$emit('filter')">
-            <button @click="$emit('filter')" class="mx-2">Search</button>
+        <div class="input-wrapper">
+            <button class="icon">
+                <i class="fa-duotone fa-magnifying-glass" style="--fa-primary-color: #ff0000; --fa-secondary-color: #d20000; --fa-secondary-opacity: 1;"></i>
+            </button>
+            <input placeholder="search.." class="input" name="text" type="text" v-model="store.searchText" @keyup.enter="$emit('filter')">
         </div>
     </header>
 </template>
@@ -35,10 +37,21 @@ header {
     color: $redlogo;
     position: sticky;
     z-index: 1;
-    top:0;
-    
+    top: 0;
+
     a:first-child {
-        color:$redlogo;
+        color: $redlogo;
+
+    }
+
+    a.text-white {
+        border-bottom: 0;
+        padding-bottom: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    a.text-white:hover {
+        border-bottom: 5px solid $light;
     }
 
     button {
@@ -54,5 +67,62 @@ header:hover {
     background-color: black;
 }
 
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+  background: transparent;
+}
 
+.input {
+  border-style: none;
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+  outline: none;
+  border-radius: 50%;
+  transition: .5s ease-in-out;
+  //box-shadow: 0px 0px 3px #f3f3f3;
+  padding-right: 40px;
+  color: #fff;
+}
+
+.input::placeholder,
+.input {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 17px;
+}
+
+.input::placeholder {
+  color: #8f8f8f;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border-style: none;
+  border-radius: 50%;
+  pointer-events: painted;
+  background: transparent;
+  transition: .2s linear;
+}
+
+.icon:focus ~ .input,
+.input:focus {
+  box-shadow: none;
+  width: 250px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 3px solid $redlogo;
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
 </style>
