@@ -31,6 +31,7 @@ export default {
          if (store.searchText.length > 0) {
             this.callApi(store.API_URL + store.searchText)
             store.paddingMain = true
+            store.searching = true
          } else {
             store.searchText = 'Please search something'
          }

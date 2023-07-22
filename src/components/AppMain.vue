@@ -2,10 +2,16 @@
 import { store } from '../store'
 import "/node_modules/flag-icons/css/flag-icons.min.css"
 import AppCard from './AppCard.vue'
+import HomeVideo from './HomeVideo.vue'
+import HomeMovies from './HomeMovies.vue'
+import HomeTvshow from './HomeTvshow.vue'
 export default {
     name: 'AppMain',
     components: {
-        AppCard
+        AppCard,
+        HomeVideo,
+        HomeMovies,
+        HomeTvshow
     },
     data() {
         return {
@@ -14,7 +20,7 @@ export default {
     },
     methods: {
         getImage(movie) {
-            if(movie) {
+            if (movie) {
                 return store.posterPath + movie
             } else {
                 return store.imgNotFound
@@ -56,6 +62,11 @@ export default {
 
 <template>
     <!-- Main -->
+    <div :class="store.searching ? 'd-none' : 'd-block'">
+        <HomeVideo />
+        <HomeMovies />
+        <HomeTvshow />
+    </div>
     <main :class="store.paddingMain ? 'pt-5' : ''">
         <div class="container">
             <ul v-if="store.movies" class="row">
@@ -72,9 +83,10 @@ export default {
 
 main {
     background-image: url('/bg-netflix.jpg');
-    background-repeat:repeat-y;
+    background-repeat: repeat-y;
     background-size: cover;
 }
+
 ul {
     color: $light;
     list-style: none;
