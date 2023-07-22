@@ -21,7 +21,7 @@ export default {
         <a href="" class="text-white text-decoration-none">My List</a>
         <div class="input-wrapper">
             <button class="icon">
-                <i class="fa-duotone fa-magnifying-glass" style="--fa-primary-color: #ff0000; --fa-secondary-color: #d20000; --fa-secondary-opacity: 1;"></i>
+                <i class="fa-solid fa-magnifying-glass fa-beat-fade fs-4" style="color: #ff0000;"></i>
             </button>
             <input placeholder="search.." class="input" name="text" type="text" v-model="store.searchText" @keyup.enter="$emit('filter')">
         </div>
