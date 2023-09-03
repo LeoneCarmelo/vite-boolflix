@@ -37,7 +37,7 @@ export default {
                 <div class="col" v-for="popular_movie in popular_movies">
                     <div class="card">
                         <div class="card-img-top">
-                            <img :src="store.posterPath + popular_movie.poster_path" alt="">
+                            <img :src="store.posterPath + popular_movie.poster_path" alt="Poster Movie" class="rounded-1">
                         </div>
                     </div>
                     <h6 class="text-light">{{ popular_movie.original_title }}</h6>
@@ -54,11 +54,14 @@ export default {
     width:100%;
     overflow-x: scroll;
     //overscroll-behavior: contain;
+    .card {
+        border: 1.5px solid white;
 
-    img {
-        width:250px;
-        height:400px;
-        object-fit: cover;
+        img {
+            width:250px;
+            height:400px;
+            object-fit: cover;
+        }
     }
 }
 </style>

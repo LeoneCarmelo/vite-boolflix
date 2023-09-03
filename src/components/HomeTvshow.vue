@@ -38,7 +38,7 @@ import axios from 'axios'
                 <div class="col" v-for="tv_show in tv_shows">
                     <div class="card">
                         <div class="card-img-top">
-                            <img :src="store.posterPath + tv_show.poster_path" alt="">
+                            <img :src="store.posterPath + tv_show.poster_path" alt="" class="rounded-1">
                         </div>
                     </div>
                     <h6 class="text-light">{{ tv_show.original_title }}</h6>
@@ -55,11 +55,15 @@ import axios from 'axios'
     width:100%;
     overflow-x: scroll;
     //overscroll-behavior: contain;
-
-    img {
-        width:250px;
-        height:400px;
-        object-fit: cover;
+    .card {
+        border: 1.5px solid white;
+        
+        img {
+            width:250px;
+            height:400px;
+            object-fit: cover;
+        }
     }
+
 }
 </style>
